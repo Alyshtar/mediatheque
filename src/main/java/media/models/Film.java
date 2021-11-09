@@ -1,10 +1,10 @@
 package media.models;
 
 public class Film extends Model {
-	private Long id_realisateur;
+	private Long idRealisateur;
 	private String titre; //Max 100 char
 	private String description; //Max 500 char
-	private int duree_minute;
+	private int dureeMinute;
 	private String genre; //Max 20 char
 	
 	public Film() {
@@ -14,28 +14,28 @@ public class Film extends Model {
 	public Film(Long id, Long id_realisateur, String titre, String description, int duree_minute, String genre) {
 		super();
 		this.id = id;
-		this.id_realisateur = id_realisateur;
+		this.idRealisateur = id_realisateur;
 		this.titre = titre;
 		this.description = description;
-		this.duree_minute = duree_minute;
+		this.dureeMinute = duree_minute;
 		this.genre = genre;
 	}
 	
 	public Film(Long id_realisateur, String titre, String description, int duree_minute, String genre) {
 		super();
-		this.id_realisateur = id_realisateur;
+		this.idRealisateur = id_realisateur;
 		this.titre = titre;
 		this.description = description;
-		this.duree_minute = duree_minute;
+		this.dureeMinute = duree_minute;
 		this.genre = genre;
 	}
 
-	public Long getId_realisateur() {
-		return id_realisateur;
+	public Long getIdRealisateur() {
+		return idRealisateur;
 	}
 
-	public void setId_realisateur(Long id_realisateur) {
-		this.id_realisateur = id_realisateur;
+	public void setIdRealisateur(Long id_realisateur) {
+		this.idRealisateur = id_realisateur;
 	}
 
 	public String getTitre() {
@@ -54,12 +54,12 @@ public class Film extends Model {
 		this.description = description;
 	}
 
-	public int getDuree_minute() {
-		return duree_minute;
+	public int getDureeMinute() {
+		return dureeMinute;
 	}
 
-	public void setDuree_minute(int duree_minute) {
-		this.duree_minute = duree_minute;
+	public void setDureeMinute(int duree_minute) {
+		this.dureeMinute = duree_minute;
 	}
 
 	public String getGenre() {
