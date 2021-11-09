@@ -188,6 +188,7 @@ public class RealisateurDaoImpl implements ModelDao {
 	        realisateur.setAge(resultSet.getInt("age"));
 	        realisateur.setPays(resultSet.getString("pays"));
 	        return realisateur;
+	        
 	    }
 	
 	
