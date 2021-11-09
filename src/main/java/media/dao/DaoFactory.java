@@ -70,9 +70,9 @@ public class DaoFactory {
 	
 	public ModelDao getDao(String nom_table) {
 		if(nom_table.equals("film")) {
-			return new FilmDaoImpl();
+			return new FilmDaoImpl(this);
 		} else if (nom_table.equals("realisateur")) {
-			return new RealisateurDaoImpl();
+			return new RealisateurDaoImpl(this);
 		}
 		return null;
 	}

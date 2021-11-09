@@ -71,17 +71,17 @@ public class FilmDaoImpl implements ModelDao {
 	public Film find( long id ) throws DaoException{
 		Connection con = null;
 		PreparedStatement pst = null;
-		ResultSet rsKeys = null;
+		ResultSet rs = null;
 		Film film =  null;
 		try {
 			con = daoFactory.getConnection();
 			pst = con.prepareStatement(SQL_SELECT_BY_ID);
 			
-			rsKeys  = pst.executeQuery();
-			if ( rsKeys.next() ) {
-		    	  film = map(rsKeys);
+			rs  = pst.executeQuery();
+			if ( rs.next() ) {
+		    	  film = map(rs);
 		      }
-			rsKeys.close();
+			rs.close();
 
 			pst.close();
 		}  catch(SQLException ex) {
@@ -98,16 +98,16 @@ public class FilmDaoImpl implements ModelDao {
 		List<Film> listFilms = new ArrayList<Film>();
 		Connection con = null;
 		PreparedStatement pst = null;
-		ResultSet rsKeys = null;
+		ResultSet rs = null;
 		try {
 			con = daoFactory.getConnection();
 			pst = con.prepareStatement(SQL_SELECT);
 
-			rsKeys  = pst.executeQuery();
-			while ( rsKeys.next() ) {
-				listFilms.add( map(rsKeys) );
+			rs  = pst.executeQuery();
+			while ( rs.next() ) {
+				listFilms.add( map(rs) );
 			}
-			rsKeys.close();
+			rs.close();
 
 			pst.close();
 		}  catch(SQLException ex) {
