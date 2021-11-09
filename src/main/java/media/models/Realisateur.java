@@ -67,6 +67,7 @@ public class Realisateur extends Model {
 
 	public void setPays(String pays) {
 		this.pays = pays;
+		
 	}
 	
 	
