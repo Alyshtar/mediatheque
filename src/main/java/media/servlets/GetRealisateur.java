@@ -7,10 +7,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
 import media.dao.DaoFactory;
 import media.dao.ModelDao;
+import media.models.Realisateur;
 
 @WebServlet(urlPatterns={"/realisateur", "/realisateur/details"})
 public class GetRealisateur extends HttpServlet {
@@ -40,8 +42,10 @@ public class GetRealisateur extends HttpServlet {
 		
 		try {
 			Long id = Long.parseLong(idRealisateur);
-			realisateurDao.find(id);
-			response.getWriter().write("ok");
+			Realisateur r = (Realisateur) realisateurDao.find(id);
+			String json = new Gson().toJson(r);
+			response.setContentType("application/json");
+			content = json.toString();
 			
 		} catch (JsonSyntaxException e) {
 			e.printStackTrace();
