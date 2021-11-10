@@ -17,7 +17,7 @@ public class RealisateurDaoImpl implements ModelDao {
 	private static final String SQL_SELECT       = "SELECT id,nom,prenom,age, pays FROM realisateur";
 	private static final String SQL_SELECT_BY_ID = "SELECT id,nom,prenom,age, pays FROM realisateur WHERE id = ?";
 	private static final String SQL_DELETE_BY_ID = "DELETE FROM realisateur WHERE id = ? ";
-	private static final String SQL_UPDATE_BY_ID = "UPDATE realisateur SET  nom=?, prenom=?, age=?, pays=?, telephone=? WHERE id = ? ";
+	private static final String SQL_UPDATE_BY_ID = "UPDATE realisateur SET  nom=?, prenom=?, age=?, pays=? WHERE id = ? ";
 
 	private DaoFactory factory;
 
