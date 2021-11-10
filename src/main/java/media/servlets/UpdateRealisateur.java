@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 
@@ -75,7 +76,9 @@ public class UpdateRealisateur extends HttpServlet {
 				realisateur.setAge(age);
 				realisateur.setPays(pays);
 				realisateurDao.update(realisateur);
-				response.getWriter().write("ok");	
+				String json = new Gson().toJson(realisateur);
+				response.setContentType("application/json");
+				content = json.toString();
 			}
 			
 		} catch (JsonSyntaxException e) {
