@@ -60,7 +60,7 @@ public class FilmDaoImpl implements ModelDao {
 
 			pst.close();		
 		}  catch(SQLException ex) {
-			throw new DaoException("Error while creating new Film : ",ex);
+			throw new DaoException("Error while creating new Film : "+ex.getMessage(),ex);
 		} finally {
 			daoFactory.releaseConnection(con);
 		}
@@ -77,6 +77,8 @@ public class FilmDaoImpl implements ModelDao {
 			con = daoFactory.getConnection();
 			pst = con.prepareStatement(SQL_SELECT_BY_ID);
 			
+			pst.setLong(	1, id	);
+			
 			rs  = pst.executeQuery();
 			if ( rs.next() ) {
 		    	  film = map(rs);
@@ -85,7 +87,7 @@ public class FilmDaoImpl implements ModelDao {
 
 			pst.close();
 		}  catch(SQLException ex) {
-			throw new DaoException("Error while reading Film with ID : "+id+" : ",ex);
+			throw new DaoException("Error while reading Film with ID : "+id+" : "+ex.getMessage(),ex);
 		} finally {
 			daoFactory.releaseConnection(con);
 		}
@@ -111,7 +113,7 @@ public class FilmDaoImpl implements ModelDao {
 
 			pst.close();
 		}  catch(SQLException ex) {
-			throw new DaoException("Error while reading Film BDD : ",ex);
+			throw new DaoException("Error while reading Film BDD : "+ex.getMessage(),ex);
 		} finally {
 			daoFactory.releaseConnection(con);
 		}
@@ -160,7 +162,7 @@ public class FilmDaoImpl implements ModelDao {
 			con = daoFactory.getConnection();
 			pst = con.prepareStatement(SQL_DELETE_BY_ID);
 
-			pst.setLong(1, id);
+			pst.setLong(	1, id	);
 
 			int statut = pst.executeUpdate();
 			if ( statut == 0 ) {
@@ -169,7 +171,7 @@ public class FilmDaoImpl implements ModelDao {
 
 			pst.close();
 		}  catch(SQLException ex) {
-			throw new DaoException("Error while deleting Film with ID : "+id+" : ",ex);
+			throw new DaoException("Error while deleting Film with ID : "+id+" : "+ex.getMessage(),ex);
 		} finally {
 			daoFactory.releaseConnection(con);
 		}
