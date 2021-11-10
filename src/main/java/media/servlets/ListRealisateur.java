@@ -13,7 +13,7 @@ import media.dao.DaoException;
 import media.dao.DaoFactory;
 import media.dao.ModelDao;
 
-@WebServlet(urlPatterns={"/realisateur/list", "/realisateur"})
+@WebServlet(urlPatterns={"/realisateur/list", "/realisateurs"})
 public class ListRealisateur extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ModelDao realisateurDao;
