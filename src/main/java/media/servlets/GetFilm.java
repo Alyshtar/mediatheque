@@ -55,14 +55,14 @@ public class GetFilm extends HttpServlet {
 			
 			JsonObject data = DataProcessing.getJsonFromRequest(request);
 			
-			HashMap<String,String> hmIdFilm = DataProcessing.checkParameter("id_realisateur", data, true, true);
+			HashMap<String,String> hmIdFilm = DataProcessing.checkParameter("id_film", data, true, true);
 			//NOT NULL donc isRequired = true et isNotNullable = true
 			if(hmIdFilm.get("error").equals("")) {
-				String idRealisateurAsString = hmIdFilm.get("parameter");
-				if(!idRealisateurAsString.matches( "^\\d+$" )) {
-					error += "The parameter "+"id_realisateur"+"must contain ONLY numbers\n";
-				} else if(idRealisateurAsString != null) {
-					id_film = Long.valueOf(idRealisateurAsString);
+				String idFilmAsString = hmIdFilm.get("parameter");
+				if(!idFilmAsString.matches( "^\\d+$" )) {
+					error += "The parameter "+"id_film"+"must contain ONLY numbers\n";
+				} else if(idFilmAsString != null) {
+					id_film = Long.valueOf(idFilmAsString);
 				}
 			} else {
 				error += hmIdFilm.get("error");
