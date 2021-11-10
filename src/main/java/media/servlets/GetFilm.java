@@ -16,7 +16,7 @@ import media.dao.ModelDao;
 /**
  * Servlet implementation class GetFilm
  */
-@WebServlet(urlPatterns={"/film", "film/details"})
+@WebServlet(urlPatterns={"/film", "/film/details"})
 public class GetFilm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ModelDao filmDao;
@@ -50,10 +50,10 @@ public class GetFilm extends HttpServlet {
 			e.printStackTrace();
 			erreur += "Wrong JSON format";
 			status = 400;
-		} catch (DaoException e) {
-			e.printStackTrace();
-			erreur += " 500 - "+e.getMessage();
-			status = 500;
+		} catch (DaoException e) { 
+			e.printStackTrace(); 
+			erreur += " 500 - "+e.getMessage(); 
+			status = 500; 
 		} catch (Exception e) {
 			e.printStackTrace();
 			erreur += "Unknown server error\n";

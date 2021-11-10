@@ -16,22 +16,22 @@ import media.dao.ModelDao;
 /**
  * Servlet implementation class CreateFilm
  */
-@WebServlet(urlPatterns={"/film/create", "film/new"})
+@WebServlet(urlPatterns={"/film/create", "/film/new"})
 public class CreateFilm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ModelDao filmDao;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public CreateFilm() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-    
-    public void init() throws ServletException{
-    	this.filmDao = DaoFactory.getInstance().getDao("film");
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public CreateFilm() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public void init() throws ServletException{
+		this.filmDao = DaoFactory.getInstance().getDao("film");
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -42,18 +42,17 @@ public class CreateFilm extends HttpServlet {
 		int status = 200;
 		String content = null;
 		String erreur = "";
-		
-		try {
-			
-			
+
+		try {			
+
 		} catch (JsonSyntaxException e) {
 			e.printStackTrace();
 			erreur += "Wrong JSON format";
 			status = 400;
-		} catch (DaoException e) {
-			e.printStackTrace();
-			erreur += " 500 - "+e.getMessage();
-			status = 500;
+		} catch (DaoException e) { 
+			e.printStackTrace(); 
+			erreur += " 500 - "+e.getMessage(); 
+			status = 500; 
 		} catch (Exception e) {
 			e.printStackTrace();
 			erreur += "Unknown server error\n";
