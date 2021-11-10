@@ -2,9 +2,9 @@ package media.models;
 
 public class Film extends Model {
 	private Long idRealisateur;
-	private String titre; //Max 100 char
+	private String titre; //Max 100 char + NOT NULL
 	private String description; //Max 500 char
-	private int dureeMinutes;
+	private int dureeMinutes; // NOT NULL
 	private String genre; //Max 20 char
 	
 	public Film() {
