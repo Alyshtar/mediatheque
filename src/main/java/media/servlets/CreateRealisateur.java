@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 
@@ -75,9 +76,10 @@ public class CreateRealisateur extends HttpServlet {
 			if(erreur.equals("")) {
 				Realisateur realisateur= new Realisateur(nom, prenom, age, pays);
 				realisateurDao.create(realisateur);
-				response.getWriter().write("ok");}
-
-			else {
+				String json = new Gson().toJson(realisateur);
+				response.setContentType("application/json");
+				content = json.toString();
+			} else {
 				response.setStatus(400);
 				response.setCharacterEncoding("UTF-8");
 				response.getWriter().write("Erreur : "+erreur);
