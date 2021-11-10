@@ -51,21 +51,25 @@ public class GetFilm extends HttpServlet {
 		
 		try {
 			
-			Long id_film = null;
+Long id_film = null;
 			
-			JsonObject data = DataProcessing.getJsonFromRequest(request);
-			
-			HashMap<String,String> hmIdFilm = DataProcessing.checkParameter("id_film", data, true, true);
-			//NOT NULL donc isRequired = true et isNotNullable = true
-			if(hmIdFilm.get("error").equals("")) {
-				String idFilmAsString = hmIdFilm.get("parameter");
-				if(!idFilmAsString.matches( "^\\d+$" )) {
-					error += "The parameter "+"id_film"+"must contain ONLY numbers\n";
-				} else if(idFilmAsString != null) {
-					id_film = Long.valueOf(idFilmAsString);
-				}
+			if(request.getParameter("id_film") != null) {
+				id_film = Long.valueOf(request.getParameter("id_film"));
 			} else {
-				error += hmIdFilm.get("error");
+				JsonObject data = DataProcessing.getJsonFromRequest(request);
+
+				HashMap<String,String> hmIdFilm = DataProcessing.checkParameter("id_film", data, true, true);	
+
+				if(hmIdFilm.get("error").equals("")) {
+					String idFilmAsString = hmIdFilm.get("parameter");
+					if(!idFilmAsString.matches( "^\\d+$" )) {
+						error += "The parameter "+"id_realisateur"+"must contain ONLY numbers\n";
+					} else if(idFilmAsString != null) {
+						id_film = Long.valueOf(idFilmAsString);
+					}
+				}else{
+					error += hmIdFilm.get("error");
+				}
 			}
 			
 			if(error.equals("")) {
