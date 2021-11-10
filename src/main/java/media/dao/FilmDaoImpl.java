@@ -13,10 +13,10 @@ import media.models.Model;
 
 public class FilmDaoImpl implements ModelDao {
 
-	private static final String SQL_INSERT = "INSERT INTO film(id_realisateur,titre,description,duree_minute,genre) VALUES (?,?,?,?,?)";
-	private static final String SQL_SELECT_BY_ID = "SELECT id,id_realisateur,titre,description,duree_minute,genre FROM film WHERE id = ?";
-	private static final String SQL_SELECT = "SELECT id,id_realisateur,titre,description,duree_minute,genre FROM film";
-	private static final String SQL_UPDATE = "UPDATE film SET id_realisateur = ?,titre = ?,description = ?,duree_minute = ?,genre = ? WHERE id = ?";
+	private static final String SQL_INSERT = "INSERT INTO film(id_realisateur,titre,description,duree_minutes,genre) VALUES (?,?,?,?,?)";
+	private static final String SQL_SELECT_BY_ID = "SELECT id,id_realisateur,titre,description,duree_minutes,genre FROM film WHERE id = ?";
+	private static final String SQL_SELECT = "SELECT id,id_realisateur,titre,description,duree_minutes,genre FROM film";
+	private static final String SQL_UPDATE = "UPDATE film SET id_realisateur = ?,titre = ?,description = ?,duree_minutes = ?,genre = ? WHERE id = ?";
 	private static final String SQL_DELETE_BY_ID = "DELETE FROM film WHERE id = ?";
 
 	private DaoFactory daoFactory;
@@ -42,7 +42,7 @@ public class FilmDaoImpl implements ModelDao {
 			pst.setLong(	1, film.getIdRealisateur()	);
 			pst.setString(	2, film.getTitre()			);
 			pst.setString(	3, film.getDescription()	);
-			pst.setInt(		4, film.getDureeMinute()	);
+			pst.setInt(		4, film.getDureeMinutes()	);
 			pst.setString(	5, film.getGenre()			);
 
 			int statut = pst.executeUpdate();
@@ -134,7 +134,7 @@ public class FilmDaoImpl implements ModelDao {
 			pst.setLong(	1, film.getIdRealisateur()	);
 			pst.setString(	2, film.getTitre()			);
 			pst.setString(	3, film.getDescription()	);
-			pst.setInt(		4, film.getDureeMinute()	);
+			pst.setInt(		4, film.getDureeMinutes()	);
 			pst.setString(	5, film.getGenre()			);
 			pst.setLong(	6, film.getId()	);
 
@@ -181,7 +181,7 @@ public class FilmDaoImpl implements ModelDao {
 		f.setIdRealisateur(rs.getLong("id_realisateur"));
 		f.setTitre(rs.getString("titre"));
 		f.setDescription(rs.getString("description"));
-		f.setDureeMinute(rs.getInt("duree_minute"));
+		f.setDureeMinutes(rs.getInt("duree_minutes"));
 		f.setGenre(rs.getString("genre"));
 		return f;
 	}

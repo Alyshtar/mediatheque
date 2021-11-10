@@ -4,7 +4,7 @@ public class Film extends Model {
 	private Long idRealisateur;
 	private String titre; //Max 100 char
 	private String description; //Max 500 char
-	private int dureeMinute;
+	private int dureeMinutes;
 	private String genre; //Max 20 char
 	
 	public Film() {
@@ -17,7 +17,7 @@ public class Film extends Model {
 		this.idRealisateur = id_realisateur;
 		this.titre = titre;
 		this.description = description;
-		this.dureeMinute = duree_minute;
+		this.dureeMinutes = duree_minute;
 		this.genre = genre;
 	}
 	
@@ -26,7 +26,7 @@ public class Film extends Model {
 		this.idRealisateur = id_realisateur;
 		this.titre = titre;
 		this.description = description;
-		this.dureeMinute = duree_minute;
+		this.dureeMinutes = duree_minute;
 		this.genre = genre;
 	}
 
@@ -54,12 +54,12 @@ public class Film extends Model {
 		this.description = description;
 	}
 
-	public int getDureeMinute() {
-		return dureeMinute;
+	public int getDureeMinutes() {
+		return dureeMinutes;
 	}
 
-	public void setDureeMinute(int duree_minute) {
-		this.dureeMinute = duree_minute;
+	public void setDureeMinutes(int duree_minute) {
+		this.dureeMinutes = duree_minute;
 	}
 
 	public String getGenre() {
