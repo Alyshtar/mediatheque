@@ -1,6 +1,5 @@
 package media.servlets;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,12 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
 
 import media.dao.DaoFactory;
 import media.dao.ModelDao;
 import media.models.Realisateur;
+import media.servlets.processing.DataProcessing;
 
 @WebServlet("/realisateur/update")
 public class UpdateRealisateur extends HttpServlet {
@@ -40,14 +39,7 @@ public class UpdateRealisateur extends HttpServlet {
 		String erreur = "";
 		
 		try {
-			StringBuffer buffer = new StringBuffer();
-			String line = null;
-			BufferedReader reader = request.getReader();
-			while ((line = reader.readLine()) != null) {
-			buffer.append(line);
-			}
-		
-			JsonObject data = JsonParser.parseString(buffer.toString()).getAsJsonObject();
+			JsonObject data = DataProcessing.getJsonFromRequest(request);
 			
 			Long id =data.get("id").getAsLong();
 			String nom=data.get("nom").getAsString();
