@@ -61,8 +61,12 @@ public class DeleteFilm extends HttpServlet {
 				HashMap<String,String> hmIdFilm = DataProcessing.checkParameter("id_film", data, true, true);	
 
 				if(hmIdFilm.get("error").equals("")) {
-					String id_filmAsString = hmIdFilm.get("parameter");
-					id_film = Long.valueOf(id_filmAsString);
+					String idFilmAsString = hmIdFilm.get("parameter");
+					if(!idFilmAsString.matches( "^\\d+$" )) {
+						error += "The parameter "+"id_realisateur"+"must contain ONLY numbers\n";
+					} else if(idFilmAsString != null) {
+						id_film = Long.valueOf(idFilmAsString);
+					}
 				}else{
 					error += hmIdFilm.get("error");
 				}
