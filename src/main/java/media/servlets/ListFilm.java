@@ -7,8 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 
+import media.servlets.processing.DataProcessing;
 import media.dao.DaoException;
 import media.dao.DaoFactory;
 import media.dao.ModelDao;
@@ -16,7 +19,7 @@ import media.dao.ModelDao;
 /**
  * Servlet implementation class ListFilm
  */
-@WebServlet(urlPatterns={"/film/list", "films"})
+@WebServlet(urlPatterns={"/film/list", "/films"})
 public class ListFilm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ModelDao filmDao;
@@ -38,18 +41,17 @@ public class ListFilm extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setCharacterEncoding("UTF-8");
-
+		
 		int status = 200;
 		String content = null;
 		String erreur = "";
 		
 		try {
 			
+			String json = new Gson().toJson(filmDao.findAll());
+			response.setContentType("application/json");
+			response.getWriter().write(json.toString());
 			
-		} catch (JsonSyntaxException e) {
-			e.printStackTrace();
-			erreur += "Wrong JSON format";
-			status = 400;
 		} catch (DaoException e) {
 			e.printStackTrace();
 			erreur += " 500 - "+e.getMessage();
